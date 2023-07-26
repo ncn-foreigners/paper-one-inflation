@@ -1,0 +1,417 @@
+---
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r, echo=FALSE}
+# loading data
+# ztoipoisson
+ztoi_p_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoipoisson_early_results_point_est"), row.names = 1)
+ztoi_p_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoipoisson_early_results_normalL"), row.names = 1)
+ztoi_p_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoipoisson_early_results_normalU"), row.names = 1)
+ztoi_p_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoipoisson_early_results_log_normalL"), row.names = 1)
+ztoi_p_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoipoisson_early_results_log_normalU"), row.names = 1)
+
+# oiztpoisson
+oizt_p_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztpoisson_early_results_point_est"), row.names = 1)
+oizt_p_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztpoisson_early_results_normalL"), row.names = 1)
+oizt_p_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztpoisson_early_results_normalU"), row.names = 1)
+oizt_p_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztpoisson_early_results_log_normalL"), row.names = 1)
+oizt_p_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztpoisson_early_results_log_normalU"), row.names = 1)
+
+# ztHurdlepoisson
+zthr_p_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlepoisson_early_results_point_est"), row.names = 1)
+zthr_p_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlepoisson_early_results_normalL"), row.names = 1)
+zthr_p_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlepoisson_early_results_normalU"), row.names = 1)
+zthr_p_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlepoisson_early_results_log_normalL"), row.names = 1)
+zthr_p_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlepoisson_early_results_log_normalU"), row.names = 1)
+
+# Hurdleztpoisson
+hrzt_p_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztpoisson_early_results_point_est"), row.names = 1)
+hrzt_p_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztpoisson_early_results_normalL"), row.names = 1)
+hrzt_p_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztpoisson_early_results_normalU"), row.names = 1)
+hrzt_p_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztpoisson_early_results_log_normalL"), row.names = 1)
+hrzt_p_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztpoisson_early_results_log_normalU"), row.names = 1)
+
+# ztoigeom
+ztoi_g_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoigeom_early_results_point_est"), row.names = 1)
+ztoi_g_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoigeom_early_results_normalL"), row.names = 1)
+ztoi_g_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoigeom_early_results_normalU"), row.names = 1)
+ztoi_g_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoigeom_early_results_log_normalL"), row.names = 1)
+ztoi_g_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoigeom_early_results_log_normalU"), row.names = 1)
+
+# oiztgeom
+oizt_g_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztgeom_early_results_point_est"), row.names = 1)
+oizt_g_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztgeom_early_results_normalL"), row.names = 1)
+oizt_g_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztgeom_early_results_normalU"), row.names = 1)
+oizt_g_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztgeom_early_results_log_normalL"), row.names = 1)
+oizt_g_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztgeom_early_results_log_normalU"), row.names = 1)
+
+# ztHurdlegeom
+zthr_g_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlegeom_early_results_point_est"), row.names = 1)
+zthr_g_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlegeom_early_results_normalL"), row.names = 1)
+zthr_g_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlegeom_early_results_normalU"), row.names = 1)
+zthr_g_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlegeom_early_results_log_normalL"), row.names = 1)
+zthr_g_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlegeom_early_results_log_normalU"), row.names = 1)
+
+# Hurdleztgeom
+hrzt_g_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztgeom_early_results_point_est"), row.names = 1)
+hrzt_g_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztgeom_early_results_normalL"), row.names = 1)
+hrzt_g_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztgeom_early_results_normalU"), row.names = 1)
+hrzt_g_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztgeom_early_results_log_normalL"), row.names = 1)
+hrzt_g_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztgeom_early_results_log_normalU"), row.names = 1)
+
+# ztoinegbin
+ztoi_nb_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoinegbin_early_results_point_est"), row.names = 1)
+ztoi_nb_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoinegbin_early_results_normalL"), row.names = 1)
+ztoi_nb_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoinegbin_early_results_normalU"), row.names = 1)
+ztoi_nb_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoinegbin_early_results_log_normalL"), row.names = 1)
+ztoi_nb_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztoinegbin_early_results_log_normalU"), row.names = 1)
+
+# oiztnegbin
+oizt_nb_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztnegbin_early_results_point_est"), row.names = 1)
+oizt_nb_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztnegbin_early_results_normalL"), row.names = 1)
+oizt_nb_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztnegbin_early_results_normalU"), row.names = 1)
+oizt_nb_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztnegbin_early_results_log_normalL"), row.names = 1)
+oizt_nb_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/oiztnegbin_early_results_log_normalU"), row.names = 1)
+
+# ztHurdlenegbin
+zthr_nb_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlenegbin_early_results_point_est"), row.names = 1)
+zthr_nb_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlenegbin_early_results_normalL"), row.names = 1)
+zthr_nb_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlenegbin_early_results_normalU"), row.names = 1)
+zthr_nb_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlenegbin_early_results_log_normalL"), row.names = 1)
+zthr_nb_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/ztHurdlenegbin_early_results_log_normalU"), row.names = 1)
+
+# Hurdleztnegbin
+hrzt_nb_point      <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztnegbin_early_results_point_est"), row.names = 1)
+hrzt_nb_norm_l     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztnegbin_early_results_normalL"), row.names = 1)
+hrzt_nb_norm_u     <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztnegbin_early_results_normalU"), row.names = 1)
+hrzt_nb_log_norm_l <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztnegbin_early_results_log_normalL"), row.names = 1)
+hrzt_nb_log_norm_u <- read.csv(paste0(paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/"), "/results/Hurdleztnegbin_early_results_log_normalU"), row.names = 1)
+```
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+#library(singleRcapture)
+# put data in long format
+results_data_frame <- data.frame(
+  data_generation = rep(c(
+    "ztoipoisson", "oiztpoisson", "ztHurdlepoisson", "Hurdleztpoisson",
+    "ztoigeom",    "oiztgeom",    "ztHurdlegeom",    "Hurdleztgeom",
+    "ztoinegbin",  "oiztnegbin",  "ztHurdlenegbin",  "Hurdleztnegbin"
+  ), 500 * c(
+    6, 6, 6, 6, 
+    7, 7, 7, 7, 
+    7, 7, 7, 7
+  )),
+  data_fitted = rep(
+    sapply(list(
+      ztoi_p_point, oizt_p_point, zthr_p_point, hrzt_p_point, 
+      ztoi_g_point, oizt_g_point, zthr_g_point, hrzt_g_point, 
+      ztoi_nb_point, oizt_nb_point, zthr_nb_point,hrzt_nb_point
+    ), FUN = colnames) |> unlist(), 
+    each = 500
+  ),
+  point = c(
+    ztoi_p_point |> as.vector() |> unlist() |> as.numeric(),
+    oizt_p_point |> as.vector() |> unlist() |> as.numeric(),
+    zthr_p_point |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_p_point |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_g_point |> as.vector() |> unlist() |> as.numeric(),
+    oizt_g_point |> as.vector() |> unlist() |> as.numeric(),
+    zthr_g_point |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_g_point |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_nb_point |> as.vector() |> unlist() |> as.numeric(),
+    oizt_nb_point |> as.vector() |> unlist() |> as.numeric(),
+    zthr_nb_point |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_nb_point |> as.vector() |> unlist() |> as.numeric()
+  ),
+  conf_int_normal_lower = c(
+    ztoi_p_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    oizt_p_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    zthr_p_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_p_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_g_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    oizt_g_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    zthr_g_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_g_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_nb_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    oizt_nb_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    zthr_nb_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_nb_norm_l |> as.vector() |> unlist() |> as.numeric()
+  ),
+  conf_int_log_normal_lower = c(
+    ztoi_p_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    oizt_p_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    zthr_p_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_p_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_g_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    oizt_g_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    zthr_g_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_g_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_nb_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    oizt_nb_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    zthr_nb_log_norm_l |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_nb_log_norm_l |> as.vector() |> unlist() |> as.numeric()
+  ),
+  conf_int_normal_upper = c(
+    ztoi_p_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    oizt_p_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    zthr_p_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_p_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_g_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    oizt_g_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    zthr_g_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_g_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_nb_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    oizt_nb_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    zthr_nb_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_nb_norm_u |> as.vector() |> unlist() |> as.numeric()
+  ),
+  conf_int_log_normal_upper = c(
+    ztoi_p_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    oizt_p_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    zthr_p_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_p_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_g_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    oizt_g_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    zthr_g_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_g_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    ztoi_nb_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    oizt_nb_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    zthr_nb_log_norm_u |> as.vector() |> unlist() |> as.numeric(),
+    hrzt_nb_log_norm_u |> as.vector() |> unlist() |> as.numeric()
+  )
+)
+```
+
+Results for counts generated by ztoipoisson:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "ztoipoisson")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztoipoisson.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by oiztpoisson:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "oiztpoisson")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/oiztpoisson.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by ztHurdlepoisson:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "ztHurdlepoisson")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlepoisson.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by hurdleztpoisson:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "Hurdleztpoisson")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlepoisson.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by ztoigeom:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "ztoigeom")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztoigeom.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by oiztgeom:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "oiztgeom")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/oiztgeom.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by ztHurdlegeom:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "ztHurdlegeom")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlegeom.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by hurdleztgeom:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "Hurdleztgeom")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlegeom.pdf"), width = 6, height = 8)
+
+p1
+```
+
+
+Results for counts generated by ztoinegbin:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "ztoinegbin")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztoinegbin.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by oiztnegbin:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "oiztnegbin")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/oiztnegbin.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by ztHurdlenegbin:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "ztHurdlenegbin")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlenegbin.pdf"), width = 6, height = 8)
+
+p1
+```
+
+Results for counts generated by hurdleztnegbin:
+
+```{r, echo=FALSE}
+dir <- paste(strsplit(getwd(), split = "/")[[1]][1:5], collapse = "/")
+p1 <- results_data_frame |>
+  subset(!is.na(point) & (data_generation == "Hurdleztnegbin")) |>
+  subset(point < 25000) |>
+  ggplot(aes(x = data_fitted, y = point)) +
+  geom_jitter(alpha = 0.05, shape = 1) + 
+  geom_violin(alpha = 0.8, draw_quantiles = 1:9 / 10, scale = "width") +
+  stat_summary(fun = function(x) mean(x, na.rm = TRUE), geom = "point") + 
+  geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
+  ylab("Point estimate") +
+  xlab("Model fitted")
+ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlenegbin.pdf"), width = 6, height = 8)
+
+p1
+```
