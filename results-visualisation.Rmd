@@ -258,7 +258,7 @@ p1 <- results_data_frame |>
   geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
   ylab("Point estimate") +
   xlab("Model fitted")
-ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlepoisson.pdf"), width = 6, height = 8)
+ggsave(plot = p1, filename = paste0(dir, "/figures/Hurdleztpoisson.pdf"), width = 6, height = 8)
 
 p1
 ```
@@ -334,7 +334,7 @@ p1 <- results_data_frame |>
   geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
   ylab("Point estimate") +
   xlab("Model fitted")
-ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlegeom.pdf"), width = 6, height = 8)
+ggsave(plot = p1, filename = paste0(dir, "/figures/Hurdleztgeom.pdf"), width = 6, height = 8)
 
 p1
 ```
@@ -411,7 +411,7 @@ p1 <- results_data_frame |>
   geom_hline(yintercept = 1000, linetype="dashed", color = "red") +
   ylab("Point estimate") +
   xlab("Model fitted")
-ggsave(plot = p1, filename = paste0(dir, "/figures/ztHurdlenegbin.pdf"), width = 6, height = 8)
+ggsave(plot = p1, filename = paste0(dir, "/figures/Hurdleztnegbin.pdf"), width = 6, height = 8)
 
 p1
 ```
