@@ -55,7 +55,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -270,7 +270,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -479,7 +479,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -688,7 +688,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -904,7 +904,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -1139,7 +1139,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -1372,7 +1372,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -1605,7 +1605,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.2, -.44, .34)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -1828,7 +1828,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.1, -.22, .14)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -2051,7 +2051,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.1, -.22, .14)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -2272,7 +2272,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.1, -.22, .14)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
@@ -2493,7 +2493,7 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     cbind(1, x1, x2, x3, x4) %*% c(.33, .6, -.1, -.22, .14)
   )
   
-  y <- fn$simulate(n = N, eta = eta, lower = -1)
+  y <- simulate(fn, eta = eta)
   
   df <- data.frame(
     y = y, x1 = x1, x2 = x2, x3 = x3, x4 = x4
