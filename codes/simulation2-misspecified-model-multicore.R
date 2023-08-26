@@ -1632,7 +1632,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1648,7 +1650,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1664,7 +1668,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1680,7 +1686,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1696,7 +1704,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1712,7 +1722,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1728,7 +1740,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1855,7 +1869,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1871,7 +1887,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1887,7 +1905,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1903,7 +1923,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1919,7 +1941,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1935,7 +1959,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -1951,7 +1977,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2078,7 +2106,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2094,7 +2124,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2110,7 +2142,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2126,7 +2160,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2142,7 +2178,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2158,7 +2196,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2168,13 +2208,15 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     M6 <- estimatePopsize(
       formula = y ~ .,
       data = df,
-      model = fn5,
+      model = fn6,
       controlModel = controlModel(
         piFormula    = ~ .,
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2299,7 +2341,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2331,7 +2375,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2347,7 +2393,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2363,7 +2411,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2379,7 +2429,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2389,13 +2441,15 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     M6 <- estimatePopsize(
       formula = y ~ .,
       data = df,
-      model = fn5,
+      model = fn6,
       controlModel = controlModel(
         piFormula    = ~ .,
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2520,7 +2574,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2536,7 +2592,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2552,7 +2610,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2568,7 +2628,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2584,7 +2646,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2600,7 +2664,9 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
@@ -2610,13 +2676,15 @@ A <- foreach(k=1:sims, .combine = rbind, .packages = c("singleRcapture")) %dopar
     M6 <- estimatePopsize(
       formula = y ~ .,
       data = df,
-      model = fn5,
+      model = fn6,
       controlModel = controlModel(
         piFormula    = ~ .,
         omegaFormula = ~ .
       ),
       controlMethod = controlMethod(
-        silent = TRUE
+        silent = TRUE,
+        # more stability hand picked
+        stepsize = .85
       )
     ),
     silent = TRUE
