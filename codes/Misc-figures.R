@@ -15,7 +15,7 @@ plot(AAA, BBB,
      xlab = paste0("Proposed approach | Deviance = ", sum(AAA^2)), 
      ylab = paste0("Common approach | Deviance = ",   sum(BBB^2)))
 
-png("deviance - comparison - plot.png")
+png("figures/deviance - comparison - plot.png")
 
 # Creating a plot
 plot(AAA, BBB, 
