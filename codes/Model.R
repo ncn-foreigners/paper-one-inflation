@@ -228,3 +228,29 @@ stratifyPopsize(m13, stratas = ~ gender * previous_offences)
 
 summary(marginalFreq(m1_b), dropl5 = "group", df = 1)
 
+# analytic confidence intervals:
+redoPopEstimation(m13_a, control = controlPopVar(alpha = .05))
+redoPopEstimation(m13_a, control = controlPopVar(alpha = .01))
+redoPopEstimation(m13_a, control = controlPopVar(alpha = .001))
+redoPopEstimation(m13_a, control = controlPopVar(alpha = .0001))
+redoPopEstimation(m13_a, control = controlPopVar(alpha = .00001))
+
+# bootstrap
+quantile(m13_a$populationSize$boot, probs = c(.025, 1 -.025))
+quantile(m13_a$populationSize$boot, probs = c(.005, 1 -.005))
+quantile(m13_a$populationSize$boot, probs = c(.0005, 1 -.0005))
+quantile(m13_a$populationSize$boot, probs = c(.00005, 1 -.00005))
+nobs(m13_a) / quantile(m13_a$populationSize$boot, probs = c(.025, 1 -.025))
+nobs(m13_a) / quantile(m13_a$populationSize$boot, probs = c(.005, 1 -.005))
+nobs(m13_a) / quantile(m13_a$populationSize$boot, probs = c(.0005, 1 -.0005))
+nobs(m13_a) / quantile(m13_a$populationSize$boot, probs = c(.00005, 1 -.00005))
+
+# for semi parametric
+quantile(m13_b$populationSize$boot, probs = c(.025, 1 -.025))
+quantile(m13_b$populationSize$boot, probs = c(.005, 1 -.005))
+quantile(m13_b$populationSize$boot, probs = c(.0005, 1 -.0005))
+quantile(m13_b$populationSize$boot, probs = c(.00005, 1 -.00005))
+nobs(m13_a) / quantile(m13_b$populationSize$boot, probs = c(.025, 1 -.025))
+nobs(m13_a) / quantile(m13_b$populationSize$boot, probs = c(.005, 1 -.005))
+nobs(m13_a) / quantile(m13_b$populationSize$boot, probs = c(.0005, 1 -.0005))
+nobs(m13_a) / quantile(m13_b$populationSize$boot, probs = c(.00005, 1 -.00005))
