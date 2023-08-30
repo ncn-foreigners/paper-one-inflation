@@ -213,11 +213,11 @@ abline(a = 0, b = 1, col = "red")
 dev.off()
 
 png("figures/model_semi_bootstrap.png")
-plot(m13_b, plotType = "bootHist", breaks = 50, ylim = c(0, 325))
+plot(m13_b, plotType = "bootHist", breaks = 60, ylim = c(0, 301))
 dev.off()
 
 png("figures/model_bootstrap.png")
-plot(m13_a, plotType = "bootHist", breaks = 50, ylim = c(0, 325))
+plot(m13_a, plotType = "bootHist", breaks = 60, ylim = c(0, 301))
 dev.off()
 
 png("figures/model_rootogram.png")
