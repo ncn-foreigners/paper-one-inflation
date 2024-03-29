@@ -1,0 +1,134 @@
+library(maxLik)
+
+# Log likelihood for PP. "li" is the lambda parameter from PP.
+llpp <- function(param) {
+  li <- exp(x %*% param[1:p])
+  return(sum(y * log(li) - log(exp(li) - 1) - log(factorial(y))))
+}
+
+# Log likelihood for OIPP. "li" is the lambda parameter and "thet" is the
+# theta parameter from OIPP. Logistic link for theta is used.
+lloipp <- function(param) {
+  li <- exp(x %*% param[1:p])
+  thet <- param[p + 1]
+  return(sum(-log(1 + thet) + (y == 1) * log(thet + (li / (exp(li) - 1))) + (1 -
+         (y==1)) * (y * log(li) - log(exp(li) - 1) - log(factorial(y)))))
+}
+
+# Choose one of the following data ---------------------------------------------
+
+# Prostitutes data
+ y <- rep(1:6, c(541, 169, 95, 37, 21, 23))
+
+# H5N1 data
+# y <- rep(1:10, c(410, 161, 87, 46, 26, 21, 8, 4, 6, 10))
+
+# Rotterdam opiate users data
+# y <- rep(1:10, c(1206, 474, 198, 95, 29, 19, 5, 2, 0, 1))
+
+# Dutch illegal immigrants data
+# y <- rep(1:6, c(1645, 183, 37, 13, 1, 1))
+
+# Illegal firearms data
+# y <- rep(1:3, c(2561, 72, 5))
+
+# Drunk driving data
+# y <- rep(1:5, c(8877, 481, 52, 8, 1))
+
+# Snowshoe hares data
+# y <- rep(1:6, c(67, 26, 18, 7, 4, 3))
+# -------------------------------------------------------------------------------
+
+# Determine sample size.
+n <- length(y)
+
+# Specify the x matrix. In the case of no covariates, use a column of 'ones'.
+x <- matrix(rep(1, n), n, 1)
+
+# Determine the columns of 'x'.
+p <- ncol(x)
+
+# Estimate PP model.
+resPP <- maxLik(llpp, method="nr", start=c(1, rep(0, p-1)), iterlim=10000)
+liPP <- exp(x %*% resPP$estimate[1:p])
+
+# Calculate the score test statistic, in the case of no covariates. Note that 
+# estimation of the OIPP model is not required.
+l <- unique(liPP)
+S <- ((n1 * (exp(l) - 1)/ l - n) ^ 2) * (l * (exp(l) * (exp(l) - l - 1))/(n * 
+      (exp(l) * (exp(l) - l - 1) ^ 2 - (exp(l) - l * exp(l) - 1) ^ 2)))
+
+# The p-value for the score test can be found by (note that due to the logistic 
+# link the null is on boundary of parameter space):
+pv <- 0.5 * (1 - pchisq(S,1))
+
+# Estimate OIPP model. wOIPP reported in Table 5. 'liPP' used for initial values.
+resOIPP <- maxLik(lloipp, method="nr", start=c(resPP$estimate,0.1),iterlim=10000)
+liOIPP <- exp(x %*% resOIPP$estimate[1:p])
+wOIPP <- resOIPP$estimate[p + 1] / (1 + resOIPP$estimate[p + 1])
+
+# Population size estimates reported in Table 5. --------------------------------
+
+# PP
+Npp <- sum(1 / (1 - exp(-liPP)))
+
+# OIPP
+Noipp <- sum(1 / (1 - exp(-liOIPP)))
+
+# Chao
+n1 <- sum(y==1)
+n2 <- sum(y==2)
+Nchao <- n1 ^ 2 / (2 * n2) + n
+
+# Zelterman
+Nzelt <- n / (1 - exp(-2 * n2 / n1))
+
+# -------------------------------------------------------------------------------
+# The following illustrates estimation using the Dutch illegal immigrants data 
+# with covariates.
+library(Matrix)
+
+# Ensure that the file 'dutch.txt' is in the working directory.
+data <- read.table("dutch.txt", header=TRUE)
+
+# Determine sample size.
+n <- nrow(data)
+
+# Create 'y' variable and 'x' matrix.
+y <- data$capture
+x <- cbind(rep(1, n), data$gender, data$age, data$nation1, data$nation2, 
+             data$nation3, data$nation4)
+
+# Determine number of covariates.
+p <- ncol(x)
+
+# Estimate PP
+resPP <- maxLik(llpp, method="nr", start=c(1, rep(0, p-1)), iterlim=10000)
+liPP <- exp(x %*% resPP$estimate[1:p])
+
+# Calculate the score statistic in the case of covariates.
+U <- sum((y==1) * (exp(liPP) - 1) / liPP) - n
+A <- exp(liPP) - 1
+B <- exp(liPP) * liPP
+J11 <- t(x) %*% Diagonal(n, B * (A - liPP) / A ^ 2) %*% x
+J12 <- t(x) %*% ((A - B) / A)
+J21 <- t((A - B) / A) %*% x
+J22 <- t(A - liPP) %*% (1 / liPP)
+S <- as.vector((U ^ 2)/(J22 - J21 %*% solve(J11) %*% J12))
+
+# p-value for the score test.
+pv <- 0.5 * (1 - pchisq(S,1))
+
+# Estimate OIPP. Use the estimates from PP for initial values.
+resOIPP <- maxLik(lloipp, method="nr", start=c(resPP$estimate,0.1), 
+                  iterlim=10000)
+liOIPP <- exp(x %*% resOIPP$estimate[1:p])
+wOIPP <- resOIPP$estimate[p + 1] / (1 + resOIPP$estimate[p + 1])
+
+# Population size estimates reported in the 6th paragraph of Section 7. --------
+
+# PP
+Npp <- sum(1 / (1 - exp(-liPP)))
+
+# OIPP
+Noipp <- sum(1 / (1 - exp(-liOIPP)))
